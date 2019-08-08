@@ -1,0 +1,49 @@
+---
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 1
+  id: 0
+  date: 2014-07-18
+  note: 
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 1
+  id: 1
+  date: 2018-07-18
+  note: 
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 1
+  id: 2
+  date: 2014-07-18
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 1
+  id: 3
+  date: 2014-07-18
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 1
+  id: 4
+  date: 2014-07-18
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 1
+  id: 5
+  date: 2014-07-18
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 1
+  id: 6
+  date: 2014-07-18
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 1
+  id: 7
+  date: 2014-07-18
+  note: This is a test ascent.

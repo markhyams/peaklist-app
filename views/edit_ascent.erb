@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-2">
+    <h5>Editing Ascent of:</h5>
+    <p><strong><%= @ascent.peak_name %></strong>: <%= @ascent.peak.elevation_str %> ft</p>
+    <p><%= @ascent.peak.county %> county, <%= @ascent.peak.state %></p>
+  </div>
+  <div class="col-md-4">
+    <form action="/ascents/<%= @ascent.id %>/edit" method="post">
+      <div class="form-group">
+        <label for="date">Date climbed: </label>
+        <input id="date" class="form-control" type="date" name="date" value="<%= @ascent.date %>">
+      </div>
+      <div class="form-group">
+        <label for="note">Enter any comments, memories or notes (optional):</label>
+        <textarea rows="6" class="form-control" name="note" id="note"><%= @ascent.note %></textarea>
+      </div>
+      <button type="submit" class="btn btn-outline-secondary">Edit Ascent</button>
+      <a onclick="return confirm('Are you sure? Changes will not be saved!');" class="btn btn-outline-secondary" href="/ascents/<%= @ascent.id %>">Cancel</a>
+    </form>
+    <p></p>
+    <form action="/ascents/<%= @ascent.id %>/delete" method="post" onsubmit="return confirm('Are you sure? This cannot be undone!');">
+      <button type="submit" class="btn btn-outline-danger">Delete</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    
+  </div>
+</div>

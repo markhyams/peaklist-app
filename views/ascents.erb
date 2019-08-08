@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xl-2">
+    <p>Click on column headings to sort by that column. Click again to reverse the sort order.</p>
+    <p>Click 'Details' to view more information about an ascent.</p>
+  </div>
+  <div class="col-xl-10">
+    <table>
+      <thead>
+        <tr>
+          <!--<th>Rank</a></th>-->
+          <% @sort_links.each do |sort_link| %>
+            <th><%= sort_link %></th>
+          <% end %>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @ascents.each do |ascent| %>
+        <tr>
+          <td><%= ascent.user_name %></td>
+          <td><%= ascent.peak_name %></td>
+          <td><%= ascent.date %></td>
+          <td><a class="btn btn-outline-secondary btn-sm" href="/ascents/<%= ascent.id %>">Details</a></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

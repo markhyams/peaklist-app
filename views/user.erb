@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-xl-2">
+    <p>Click 'Details' to view more information about an ascent.</p>
+  </div>
+  <div class="col-xl-10">
+        <p>Username: <%= @user.username %></p>
+    
+    <div class="row">
+      <div class="col-md-8">
+        <h4 class="table-title">Ascents <span class="badge badge-secondary"><%= @user.num_of_ascents %></span></h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Peak</th>
+              <th>Elevation</th>
+              <th>Date</th>
+            <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @ascents.each do |ascent| %>
+            <tr>
+              <td><%= ascent.peak_name %></td>
+              <td><%= ascent.peak.elevation_str %></td>
+              <td><%= ascent.date_display %></td>
+              <td><a class="btn btn-outline-secondary btn-sm" href="/ascents/<%= ascent.id %>">Details</a></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="col-md-4">
+        <h4 class="table-title">Peaks <span class="badge badge-secondary"><%= @user.num_of_peaks %></span></h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Peak</th>
+              <th>Elevation</th>
+            <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @unique_ascents.each do |ascent| %>
+            <tr>
+              <td><%= ascent.peak_name %></td>
+              <td><%= ascent.peak.elevation_str %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

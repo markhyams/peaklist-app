@@ -1,0 +1,551 @@
+---
+- !ruby/object:Peak
+  id: 1
+  name: Elbert, Mount
+  elevation: 14433
+  prominence: 9093
+  isolation: 669.95
+  parent: Whitney, Mount
+  county: Lake
+  quad: Mount Elbert
+  state: CO
+- !ruby/object:Peak
+  id: 2
+  name: Massive, Mount
+  elevation: 14421
+  prominence: 1961
+  isolation: 5.08
+  parent: Elbert, Mount
+  county: Lake
+  quad: Mount Massive
+  state: CO
+- !ruby/object:Peak
+  id: 3
+  name: Harvard, Mount
+  elevation: 14420
+  prominence: 2360
+  isolation: 14.96
+  parent: Elbert, Mount
+  county: Chaffee
+  quad: Mount Harvard
+  state: CO
+- !ruby/object:Peak
+  id: 4
+  name: Blanca Peak
+  elevation: 14345
+  prominence: 5326
+  isolation: 103.61
+  parent: Harvard, Mount
+  county: Alamosa & Costilla
+  quad: Blanca Peak
+  state: CO
+- !ruby/object:Peak
+  id: 5
+  name: La Plata Peak
+  elevation: 14336
+  prominence: 1836
+  isolation: 6.29
+  parent: Elbert, Mount
+  county: Chaffee
+  quad: Mount Elbert
+  state: CO
+- !ruby/object:Peak
+  id: 6
+  name: Uncompahgre Peak
+  elevation: 14309
+  prominence: 4242
+  isolation: 85.16
+  parent: La Plata Peak
+  county: Hinsdale
+  quad: Uncompahgre Peak
+  state: CO
+- !ruby/object:Peak
+  id: 7
+  name: Crestone Peak
+  elevation: 14294
+  prominence: 4554
+  isolation: 27.47
+  parent: Blanca Peak
+  county: Saguache
+  quad: Crestone Peak
+  state: CO
+- !ruby/object:Peak
+  id: 8
+  name: Lincoln, Mount
+  elevation: 14286
+  prominence: 3862
+  isolation: 22.57
+  parent: Massive, Mount
+  county: Park
+  quad: Alma
+  state: CO
+- !ruby/object:Peak
+  id: 9
+  name: Grays Peak
+  elevation: 14270
+  prominence: 2770
+  isolation: 25.05
+  parent: Lincoln, Mount
+  county: Clear Creek & Summit
+  quad: Grays Peak
+  state: CO
+- !ruby/object:Peak
+  id: 10
+  name: Antero, Mount
+  elevation: 14269
+  prominence: 2503
+  isolation: 17.77
+  parent: Harvard, Mount
+  county: Chaffee
+  quad: Mount Antero
+  state: CO
+- !ruby/object:Peak
+  id: 11
+  name: Torreys Peak
+  elevation: 14267
+  prominence: 560
+  isolation: 0.65
+  parent: Grays Peak
+  county: Clear Creek & Summit
+  quad: Grays Peak
+  state: CO
+- !ruby/object:Peak
+  id: 12
+  name: Castle Peak
+  elevation: 14265
+  prominence: 2365
+  isolation: 20.91
+  parent: La Plata Peak
+  county: Gunnison & Pitkin
+  quad: Hayden Peak
+  state: CO
+- !ruby/object:Peak
+  id: 13
+  name: Quandary Peak
+  elevation: 14265
+  prominence: 1125
+  isolation: 3.18
+  parent: Lincoln, Mount
+  county: Summit
+  quad: Breckenridge
+  state: CO
+- !ruby/object:Peak
+  id: 14
+  name: Evans, Mount
+  elevation: 14264
+  prominence: 2764
+  isolation: 9.79
+  parent: Grays Peak
+  county: Clear Creek
+  quad: Mount Evans
+  state: CO
+- !ruby/object:Peak
+  id: 15
+  name: Longs Peak
+  elevation: 14255
+  prominence: 2940
+  isolation: 43.74
+  parent: Torreys Peak
+  county: Boulder
+  quad: Longs Peak
+  state: CO
+- !ruby/object:Peak
+  id: 16
+  name: Wilson, Mount
+  elevation: 14246
+  prominence: 4024
+  isolation: 33.05
+  parent: Uncompahgre Peak
+  county: Dolores
+  quad: Mount Wilson
+  state: CO
+- !ruby/object:Peak
+  id: 17
+  name: Shavano, Mount
+  elevation: 14229
+  prominence: 1619
+  isolation: 3.82
+  parent: Antero, Mount
+  county: Chaffee
+  quad: Maysville
+  state: CO
+- !ruby/object:Peak
+  id: 18
+  name: Princeton, Mount
+  elevation: 14197
+  prominence: 2177
+  isolation: 5.21
+  parent: Antero, Mount
+  county: Chaffee
+  quad: Mount Antero
+  state: CO
+- !ruby/object:Peak
+  id: 19
+  name: Belford, Mount
+  elevation: 14197
+  prominence: 1337
+  isolation: 3.32
+  parent: Harvard, Mount
+  county: Chaffee
+  quad: Mount Harvard
+  state: CO
+- !ruby/object:Peak
+  id: 20
+  name: Crestone Needle
+  elevation: 14197
+  prominence: 457
+  isolation: 0.49
+  parent: Crestone Peak
+  county: Custer & Saguache
+  quad: Crestone Peak
+  state: CO
+- !ruby/object:Peak
+  id: 21
+  name: Yale, Mount
+  elevation: 14196
+  prominence: 1896
+  isolation: 5.56
+  parent: Harvard, Mount
+  county: Chaffee
+  quad: Mount Yale
+  state: CO
+- !ruby/object:Peak
+  id: 22
+  name: Bross, Mount
+  elevation: 14172
+  prominence: 312
+  isolation: 1.13
+  parent: Lincoln, Mount
+  county: Park
+  quad: Alma
+  state: CO
+- !ruby/object:Peak
+  id: 23
+  name: Kit Carson Mountain
+  elevation: 14165
+  prominence: 1025
+  isolation: 1.3
+  parent: Crestone Peak
+  county: Saguache
+  quad: Crestone Peak
+  state: CO
+- !ruby/object:Peak
+  id: 24
+  name: Maroon Peak
+  elevation: 14156
+  prominence: 2336
+  isolation: 8.06
+  parent: Castle Peak
+  county: Gunnison & Pitkin
+  quad: Maroon Bells
+  state: CO
+- !ruby/object:Peak
+  id: 25
+  name: Tabeguache Peak
+  elevation: 14155
+  prominence: 455
+  isolation: 0.75
+  parent: Shavano, Mount
+  county: Chaffee
+  quad: Saint Elmo
+  state: CO
+- !ruby/object:Peak
+  id: 26
+  name: Oxford, Mount
+  elevation: 14153
+  prominence: 653
+  isolation: 1.23
+  parent: Belford, Mount
+  county: Chaffee
+  quad: Mount Harvard
+  state: CO
+- !ruby/object:Peak
+  id: 27
+  name: Sneffels, Mount
+  elevation: 14150
+  prominence: 3050
+  isolation: 15.74
+  parent: Wilson, Mount
+  county: Ouray
+  quad: Mount Sneffels
+  state: CO
+- !ruby/object:Peak
+  id: 28
+  name: Democrat, Mount
+  elevation: 14148
+  prominence: 768
+  isolation: 1.73
+  parent: Lincoln, Mount
+  county: Lake & Park
+  quad: Climax
+  state: CO
+- !ruby/object:Peak
+  id: 29
+  name: Capitol Peak
+  elevation: 14130
+  prominence: 1750
+  isolation: 7.46
+  parent: Maroon Peak
+  county: Pitkin
+  quad: Capitol Peak
+  state: CO
+- !ruby/object:Peak
+  id: 30
+  name: Pikes Peak
+  elevation: 14110
+  prominence: 5530
+  isolation: 60.88
+  parent: Evans, Mount
+  county: El Paso
+  quad: Pikes Peak
+  state: CO
+- !ruby/object:Peak
+  id: 31
+  name: Snowmass Mountain
+  elevation: 14092
+  prominence: 1152
+  isolation: 2.34
+  parent: Capitol Peak
+  county: Gunnison & Pitkin
+  quad: Snowmass Mountain
+  state: CO
+- !ruby/object:Peak
+  id: 32
+  name: Windom Peak
+  elevation: 14087
+  prominence: 2187
+  isolation: 26.55
+  parent: Wilson, Mount
+  county: La Plata
+  quad: Columbine Pass
+  state: CO
+- !ruby/object:Peak
+  id: 33
+  name: Eolus, Mount
+  elevation: 14083
+  prominence: 1023
+  isolation: 1.68
+  parent: Windom Peak
+  county: La Plata
+  quad: Columbine Pass
+  state: CO
+- !ruby/object:Peak
+  id: 34
+  name: Challenger Point
+  elevation: 14081
+  prominence: 301
+  isolation: 0.23
+  parent: Kit Carson Mountain
+  county: Saguache
+  quad: Crestone Peak
+  state: CO
+- !ruby/object:Peak
+  id: 35
+  name: Columbia, Mount
+  elevation: 14073
+  prominence: 893
+  isolation: 1.89
+  parent: Harvard, Mount
+  county: Chaffee
+  quad: Mount Harvard
+  state: CO
+- !ruby/object:Peak
+  id: 36
+  name: Missouri Mountain
+  elevation: 14067
+  prominence: 847
+  isolation: 1.3
+  parent: Belford, Mount
+  county: Chaffee
+  quad: Winfield
+  state: CO
+- !ruby/object:Peak
+  id: 37
+  name: Humboldt Peak
+  elevation: 14064
+  prominence: 1204
+  isolation: 1.42
+  parent: Crestone Needle
+  county: Custer
+  quad: Crestone Peak
+  state: CO
+- !ruby/object:Peak
+  id: 38
+  name: Bierstadt, Mount
+  elevation: 14060
+  prominence: 720
+  isolation: 1.41
+  parent: Evans, Mount
+  county: Clear Creek
+  quad: Mount Evans
+  state: CO
+- !ruby/object:Peak
+  id: 39
+  name: Sunlight Peak
+  elevation: 14059
+  prominence: 399
+  isolation: 0.47
+  parent: Windom Peak
+  county: La Plata
+  quad: Storm King Peak
+  state: CO
+- !ruby/object:Peak
+  id: 40
+  name: Handies Peak
+  elevation: 14048
+  prominence: 1908
+  isolation: 11.22
+  parent: Uncompahgre Peak
+  county: Hinsdale
+  quad: Handies Peak
+  state: CO
+- !ruby/object:Peak
+  id: 41
+  name: Culebra Peak
+  elevation: 14047
+  prominence: 4827
+  isolation: 35.55
+  parent: Blanca Peak
+  county: Costilla
+  quad: Culebra Peak
+  state: CO
+- !ruby/object:Peak
+  id: 42
+  name: Lindsey, Mount
+  elevation: 14042
+  prominence: 1542
+  isolation: 2.28
+  parent: Blanca Peak
+  county: Costilla
+  quad: Blanca Peak
+  state: CO
+- !ruby/object:Peak
+  id: 43
+  name: Ellingwood Point
+  elevation: 14042
+  prominence: 342
+  isolation: 0.51
+  parent: Blanca Peak
+  county: Alamosa & Huerfano
+  quad: Blanca Peak
+  state: CO
+- !ruby/object:Peak
+  id: 44
+  name: Little Bear Peak
+  elevation: 14037
+  prominence: 377
+  isolation: 0.98
+  parent: Blanca Peak
+  county: Alamosa & Costilla
+  quad: Blanca Peak
+  state: CO
+- !ruby/object:Peak
+  id: 45
+  name: Sherman, Mount
+  elevation: 14036
+  prominence: 896
+  isolation: 8.1
+  parent: Democrat, Mount
+  county: Lake & Park
+  quad: Mount Sherman
+  state: CO
+- !ruby/object:Peak
+  id: 46
+  name: Redcloud Peak
+  elevation: 14034
+  prominence: 1436
+  isolation: 4.91
+  parent: Handies Peak
+  county: Hinsdale
+  quad: Redcloud Peak
+  state: CO
+- !ruby/object:Peak
+  id: 47
+  name: Pyramid Peak
+  elevation: 14018
+  prominence: 1638
+  isolation: 2.08
+  parent: Maroon Peak
+  county: Pitkin
+  quad: Maroon Bells
+  state: CO
+- !ruby/object:Peak
+  id: 48
+  name: Wilson Peak
+  elevation: 14017
+  prominence: 877
+  isolation: 1.51
+  parent: Wilson, Mount
+  county: San Miguel
+  quad: Mount Wilson
+  state: CO
+- !ruby/object:Peak
+  id: 49
+  name: Wetterhorn Peak
+  elevation: 14015
+  prominence: 1635
+  isolation: 2.76
+  parent: Uncompahgre Peak
+  county: Hinsdale & Ouray
+  quad: Wetterhorn Peak
+  state: CO
+- !ruby/object:Peak
+  id: 50
+  name: San Luis Peak
+  elevation: 14014
+  prominence: 3114
+  isolation: 26.93
+  parent: Redcloud Peak
+  county: Saguache
+  quad: San Luis Peak
+  state: CO
+- !ruby/object:Peak
+  id: 51
+  name: Holy Cross, Mount of the
+  elevation: 14005
+  prominence: 2111
+  isolation: 19.33
+  parent: Massive, Mount
+  county: Eagle
+  quad: Mount of the Holy Cross
+  state: CO
+- !ruby/object:Peak
+  id: 52
+  name: Huron Peak
+  elevation: 14003
+  prominence: 1423
+  isolation: 3.2
+  parent: Missouri Mountain
+  county: Chaffee
+  quad: Winfield
+  state: CO
+- !ruby/object:Peak
+  id: 53
+  name: Sunshine Peak
+  elevation: 14001
+  prominence: 501
+  isolation: 1.27
+  parent: Redcloud Peak
+  county: Hinsdale
+  quad: Redcloud Peak
+  state: CO
+- !ruby/object:Peak
+  id: 54
+  name: North Maroon Peak
+  elevation: 14014
+  prominence: 234
+  isolation: 0.37
+  parent: Maroon Peak
+  county: Pitkin
+  quad: Maroon Bells
+  state: CO
+- !ruby/object:Peak
+  id: 55
+  name: El Diente Peak
+  elevation: 14159
+  prominence: 259
+  isolation: 0.75
+  parent: Wilson, Mount
+  county: Dolores
+  quad: Dolores Peak
+  state: CO

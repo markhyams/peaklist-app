@@ -1,0 +1,31 @@
+---
+- !ruby/object:Peak
+  id: 1
+  name: Elbert, Mount
+  elevation: 14433
+  prominence: 9093
+  isolation: 669.95
+  parent: Whitney, Mount
+  county: Lake
+  quad: Mount Elbert
+  state: CO
+- !ruby/object:Peak
+  id: 2
+  name: Massive, Mount
+  elevation: 14421
+  prominence: 1961
+  isolation: 5.08
+  parent: Elbert, Mount
+  county: Lake
+  quad: Mount Massive
+  state: CO
+- !ruby/object:Peak
+  id: 3
+  name: Harvard, Mount
+  elevation: 14420
+  prominence: 2360
+  isolation: 14.96
+  parent: Elbert, Mount
+  county: Chaffee
+  quad: Mount Harvard
+  state: CO

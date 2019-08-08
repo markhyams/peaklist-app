@@ -1,0 +1,27 @@
+body {
+/* default is 1rem or 16px */
+font-size: 16px;
+font-weight: 400;
+line-height: 1.5;
+}
+
+table {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+thead {
+  padding-top: 20px;
+}
+
+tr, th, td {
+  padding: 5px 10px;
+}
+
+tr {
+  border-bottom: 1px solid gray;
+}
+
+h3.table-title {
+  /*margin-top: 20px;*/
+}

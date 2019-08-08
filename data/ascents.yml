@@ -1,0 +1,579 @@
+---
+- !ruby/object:Ascent
+  userid: 1
+  peakid: 28
+  id: 8
+  date: 2015-07-23
+  note: With Mark and Felicia
+- !ruby/object:Ascent
+  userid: 3
+  peakid: 31
+  id: 10
+  date: 2001-07-09
+  note: ''
+- !ruby/object:Ascent
+  userid: 3
+  peakid: 31
+  id: 11
+  date: 2019-06-09
+  note: Great days in the wilderness.
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 12
+  id: 13
+  date: 1994-07-11
+  note: First real fourteener!
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 15
+  id: 14
+  date: 1993-07-26
+  note: First 14er ever!
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 1
+  id: 15
+  date: 1994-07-16
+  note: Second fourteener of the summer, and third overall. Climbed with two percussionists
+    from the Aspen Music Festival.  Unfortunately I don't remember their names. :(
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 5
+  id: 16
+  date: 1994-07-24
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 52
+  id: 17
+  date: 1994-07-30
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 47
+  id: 18
+  date: 1994-08-01
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 24
+  id: 19
+  date: 1994-08-08
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 26
+  id: 20
+  date: 1994-08-11
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 19
+  id: 21
+  date: 1994-08-11
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 36
+  id: 22
+  date: 1994-08-11
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 45
+  id: 23
+  date: 1994-08-22
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 38
+  id: 24
+  date: 1994-08-27
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 14
+  id: 25
+  date: 1994-08-27
+  note: ''
+- !ruby/object:Ascent
+  userid: 4
+  peakid: 15
+  id: 26
+  date: 2019-07-09
+  note: so scary
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 15
+  id: 28
+  date: 1993-09-11
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 51
+  id: 29
+  date: 1994-09-03
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 8
+  id: 30
+  date: 1994-09-10
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 22
+  id: 31
+  date: 1994-09-10
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 28
+  id: 32
+  date: 1994-09-10
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 25
+  id: 33
+  date: 1995-08-13
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 27
+  id: 34
+  date: 1995-08-15
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 49
+  id: 35
+  date: 1995-08-16
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 7
+  id: 36
+  date: 1995-09-03
+  note: Climbed on Labor Day weekend, with Dan and Tadd. Squeezed into the tent on
+    a windy night.
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 21
+  id: 37
+  date: 1995-09-24
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 18
+  id: 38
+  date: 1995-11-25
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 10
+  id: 39
+  date: 1996-03-30
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 38
+  id: 40
+  date: 1996-04-23
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 17
+  id: 41
+  date: 1996-06-19
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 3
+  id: 42
+  date: 1996-06-30
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 29
+  id: 43
+  date: 1996-07-06
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 30
+  id: 44
+  date: 1996-07-14
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 4
+  id: 45
+  date: 1996-07-30
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 44
+  id: 46
+  date: 1996-07-30
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 43
+  id: 47
+  date: 1996-08-01
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 48
+  id: 48
+  date: 1996-08-14
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 2
+  id: 49
+  date: 1996-09-07
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 9
+  id: 50
+  date: 1994-09-17
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 11
+  id: 51
+  date: 1994-09-17
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 13
+  id: 52
+  date: 1994-10-02
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 13
+  id: 53
+  date: 1994-11-07
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 13
+  id: 54
+  date: 1997-05-08
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 35
+  id: 55
+  date: 1997-06-03
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 6
+  id: 56
+  date: 1997-06-08
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 41
+  id: 57
+  date: 1997-06-14
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 16
+  id: 58
+  date: 1997-07-07
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 50
+  id: 59
+  date: 1998-07-01
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 46
+  id: 60
+  date: 1998-08-15
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 53
+  id: 61
+  date: 1998-08-15
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 40
+  id: 62
+  date: 1998-08-16
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 15
+  id: 63
+  date: 1998-08-30
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 42
+  id: 64
+  date: 1999-06-10
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 37
+  id: 65
+  date: 1999-06-17
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 9
+  id: 66
+  date: 1999-07-19
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 11
+  id: 67
+  date: 1999-07-19
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 31
+  id: 68
+  date: 1999-07-28
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 33
+  id: 69
+  date: 1999-08-03
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 32
+  id: 70
+  date: 1999-08-04
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 39
+  id: 71
+  date: 1999-08-04
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 23
+  id: 72
+  date: 1999-08-20
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 20
+  id: 73
+  date: 1999-08-21
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 15
+  id: 74
+  date: 1999-08-26
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 20
+  id: 75
+  date: 2000-08-08
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 15
+  id: 76
+  date: 2000-08-16
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 15
+  id: 77
+  date: 2000-08-30
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 22
+  id: 78
+  date: 2001-03-04
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 38
+  id: 79
+  date: 2001-06-28
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 10
+  id: 80
+  date: 2003-06-09
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 30
+  id: 81
+  date: 2003-06-13
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 45
+  id: 82
+  date: 2003-06-17
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 52
+  id: 83
+  date: 2003-07-03
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 15
+  id: 84
+  date: 2003-07-18
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 1
+  id: 85
+  date: 2004-06-07
+  note: With Josh M and his dogs, Jake and Biff
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 3
+  id: 86
+  date: 2004-07-07
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 27
+  id: 87
+  date: 2005-07-21
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 51
+  id: 88
+  date: 2006-07-24
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 34
+  id: 89
+  date: 2007-06-11
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 27
+  id: 90
+  date: 2012-07-24
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 38
+  id: 91
+  date: 2013-07-16
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 8
+  id: 92
+  date: 2015-07-23
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 22
+  id: 93
+  date: 2015-07-23
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 28
+  id: 94
+  date: 2015-07-23
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 15
+  id: 95
+  date: 2015-08-06
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 20
+  id: 96
+  date: 2015-08-15
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 54
+  id: 97
+  date: 1994-07-27
+  note: ''
+- !ruby/object:Ascent
+  userid: 0
+  peakid: 55
+  id: 98
+  date: 1999-08-17
+  note: ''
+- !ruby/object:Ascent
+  userid: 1
+  peakid: 8
+  id: 99
+  date: 2015-07-23
+  note: ''
+- !ruby/object:Ascent
+  userid: 1
+  peakid: 22
+  id: 100
+  date: 2015-07-23
+  note: ''
+- !ruby/object:Ascent
+  userid: 1
+  peakid: 15
+  id: 101
+  date: 2015-08-06
+  note: ''
+- !ruby/object:Ascent
+  userid: 1
+  peakid: 38
+  id: 102
+  date: 2013-07-16
+  note: ''
+- !ruby/object:Ascent
+  userid: 1
+  peakid: 27
+  id: 103
+  date: 2012-07-24
+  note: ''
+- !ruby/object:Ascent
+  userid: 3
+  peakid: 1
+  id: 104
+  date: 2019-07-11
+  note: ''
+- !ruby/object:Ascent
+  userid: 2
+  peakid: 27
+  id: 105
+  date: 2012-07-24
+  note: Climbed it twice that day!
+- !ruby/object:Ascent
+  userid: 3
+  peakid: 40
+  id: 106
+  date: 2014-06-12
+  note: Climbed this one many times! I wish I wrote down the dates.
