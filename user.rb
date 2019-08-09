@@ -19,7 +19,7 @@ class User < PeakListRecord
       load_records
     end
 
-    def sort_users(sort_by, rev)
+    def sort_class_records(sort_by, rev)
       sort_records(sort_by, rev)
     end
 

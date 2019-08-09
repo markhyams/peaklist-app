@@ -1,5 +1,4 @@
 require 'sinatra'
-require "sinatra/reloader" if development?
 require "tilt/erubis"
 require 'yaml'
 require 'bcrypt'
@@ -9,12 +8,22 @@ require_relative "peaklistrecord"
 require_relative "peak"
 require_relative "user"
 require_relative "ascent"
+require_relative "file_persistence"
 
 configure do
   enable :sessions
   set :session_secret, "secret"
   # Use for more security: ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
 end
+
+configure(:development) do
+  require "sinatra/reloader"
+  also_reload "peaklistrecord.rb"
+  also_reload "peak.rb"
+  also_reload "user.rb"
+  also_reload "ascent.rb"
+end
+
 
 helpers do
   def h(content)
@@ -34,26 +43,6 @@ def data_path
     File.expand_path("../test", __FILE__)
   else
     File.expand_path("../", __FILE__)
-  end
-end
-
-class FilePersistence
-  attr_reader :ascent_class, :user_class, :peak_class
-  
-  CLASSES = {
-    peak: Peak,
-    ascent: Ascent,
-    user: User
-  }
-  
-  def initialize
-    @ascent_class = Ascent
-    @user_class = User
-    @peak_class = Peak
-  end
-  
-  def create_sort_links(params, class_sym)
-    CLASSES[class_sym].create_sort_links(params)
   end
 end
 
@@ -78,28 +67,32 @@ end
 get "/peaks" do
   sort_by = params[:sort_by] ||= "elevation"
   reverse = params[:sort] == "reverse"
+  class_sym = :peak
 
-  @sort_links = @storage.create_sort_links(params, :peak)
-  @peaks = @storage.peak_class.sort_peaks(sort_by, reverse)
+  @sort_links = @storage.create_sort_links(params, class_sym)
+  @peaks = @storage.all_records_sorted(sort_by, reverse, class_sym)
   erb :peaks
 end
 
 get "/ascents" do
-  params[:sort] ||= "reverse" unless params[:sort_by]
-  params[:sort_by] ||= "date"
+  reverse = params[:sort] ||= "reverse" unless params[:sort_by]
+  sort_by = params[:sort_by] ||= "date"
+  class_sym = :ascent
 
   reverse = params[:sort] == "reverse"
 
-  @sort_links = Ascent.create_sort_links(params)
-  @ascents = Ascent.sort_ascents(params[:sort_by], reverse)
+  @sort_links = @storage.create_sort_links(params, class_sym)
+  @ascents = @storage.all_records_sorted(sort_by, reverse, class_sym)
   erb :ascents
 end
 
 get "/users" do
   reverse = params[:sort] == "reverse"
+  sort_by = params[:sort_by]
+  class_sym = :user
 
-  @sort_links = User.create_sort_links(params)
-  @users = User.sort_users(params[:sort_by], reverse)
+  @sort_links = @storage.create_sort_links(params, class_sym)
+  @users = @storage.all_records_sorted(sort_by, reverse, class_sym)
   erb :users
 end
 
@@ -120,7 +113,7 @@ post "/users/signup" do
     status 422
     erb :signup
   else
-    User.create_new_user(signup_data)
+    @storage.create_new_user(signup_data)
     alert_message("You have signed up successfully.")
     redirect "/"
   end
@@ -142,7 +135,7 @@ post "/users/signin" do
     status 422
     erb :signin
   else
-    session[:user] = User.load_user(signin_data[:username])
+    session[:user] = @storage.load_user_by_username(signin_data[:username])
     alert_message("You have logged in successfully.")
     redirect "/"
   end
@@ -155,20 +148,20 @@ get "/users/signout" do
 end
 
 get "/users/:userid" do
-  @user = User.load_user_by_id(params[:userid].to_i)
+  @user = @storage.load_user_by_id(params[:userid].to_i)
 
   if !@user
     alert_message("User does not exist.", "danger")
     redirect "/users"
   else
-    @ascents = @user.user_ascents
-    @unique_ascents = @user.unique_peaks
+    @ascents = @storage.ascents_by_user(@user)
+    @unique_ascents = @storage.peaks_by_user(@user)
     erb :user
   end
 end
 
 get "/ascents/:ascentid" do
-  @ascent = Ascent.load_record_by_id(params[:ascentid].to_i)
+  @ascent = @storage.load_ascent_by_id(params[:ascentid].to_i)
 
   if !@ascent
     alert_message("Ascent does not exist.", "danger")
@@ -181,7 +174,7 @@ end
 get "/ascents/:ascentid/edit" do
   require_signed_in_user
 
-  @ascent = Ascent.load_record_by_id(params[:ascentid].to_i)
+  @ascent = @storage.load_ascent_by_id(params[:ascentid].to_i)
 
   if session[:user].id != @ascent.user.id
     alert_message("This is not your ascent.", "danger")
@@ -207,7 +200,7 @@ post "/ascents/:ascentid/edit" do
     status 422
     erb :edit_ascent
   else
-    Ascent.edit_ascent(ascent_data)
+    @storage.edit_ascent(ascent_data)
     alert_message("Ascent edited.")
     redirect "/ascents/#{params[:ascentid]}"
   end
@@ -216,7 +209,7 @@ end
 post "/ascents/:ascentid/delete" do
   require_signed_in_user
 
-  Ascent.delete_ascent(params[:ascentid].to_i)
+  @storage.delete_ascent(params[:ascentid].to_i)
   alert_message("Ascent deleted.")
   redirect "/users/#{session[:user].id}"
 end
@@ -224,7 +217,7 @@ end
 get "/ascents/add_ascent/:peak_id" do
   require_signed_in_user
 
-  @peak = Peak.load_peak_by_id(params[:peak_id].to_i)
+  @peak = @storage.load_peak_by_id(params[:peak_id].to_i)
 
   if !@peak
     alert_message("Peak does not exist.", "danger")
@@ -245,25 +238,22 @@ post "/ascents/add_ascent/:peak_id" do
     note: params[:note].to_s.strip
   }
 
-  @peak = Peak.load_peak_by_id(ascent_data[:peak_id])
+  @peak = @storage.load_peak_by_id(params[:peak_id].to_i)
   message = Ascent.invalid_message(ascent_data)
-  # if !@peak
-  #   alert_message("Peak does not exist.", "danger")
-  #   status 422
-  #   redirect "/"
+
   if message
     alert_message(message, "danger")
     status 422
     erb :add_ascent
   else
-    Ascent.create_new_ascent(ascent_data)
+    @storage.create_ascent(ascent_data)
     alert_message("Ascent of #{@peak.name} added.")
     redirect "/peaks"
   end
 end
 
 get "/peaks/:peakid" do
-  @peak = Peak.load_peak_by_id(params[:peakid].to_i)
+  @peak = @storage.load_peak_by_id(params[:peakid].to_i)
 
   erb :peak
 end

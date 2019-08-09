@@ -58,7 +58,7 @@ class Ascent < PeakListRecord
       "Invalid date."
     end
 
-    def sort_ascents(sort_by, rev)
+    def sort_class_records(sort_by, rev)
       sort_records(sort_by, rev)
     end
   end

@@ -35,7 +35,7 @@ class Peak < PeakListRecord
       load_record_by_id(id)
     end
 
-    def sort_peaks(sort_by, rev)
+    def sort_class_records(sort_by, rev)
       if REVERSE_SORTS.include?(sort_by)
         rev = rev == false
       end
