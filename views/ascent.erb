@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xl-2">
-    <% if session[:user] && session[:user].id == @ascent.user.id %>
+    <% if session[:user] && session[:user].id == @ascent.userid %>
       <p><a class="btn btn-outline-secondary btn-sm" href="/ascents/<%= @ascent.id %>/edit">Edit Ascent</a></p>
     <% end %>
   </div>

@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-md-2">
     <h5>Editing Ascent of:</h5>
-    <p><strong><%= @ascent.peak_name %></strong>: <%= @ascent.peak.elevation_str %> ft</p>
-    <p><%= @ascent.peak.county %> county, <%= @ascent.peak.state %></p>
+    <p><strong><%= @peak.name %></strong>: <%= @peak.elevation_str %> ft</p>
+    <p><%= @peak.county %> county, <%= @peak.state %></p>
   </div>
   <div class="col-md-4">
     <form action="/ascents/<%= @ascent.id %>/edit" method="post">

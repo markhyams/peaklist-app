@@ -120,11 +120,12 @@ end
 post "/users/signup" do
   signup_data = {
     username: params[:username].strip,
-    pass1: params[:password1],
-    pass2: params[:password2]
+    password: params[:password1],
+    password_verify: params[:password2]
   }
-
-  invalid_message = User.invalid_signup_message(signup_data)
+  new_user = @storage.load_user_from_input(signup_data)
+  
+  invalid_message = new_user.invalid_signup_message(signup_data)
   if invalid_message
     alert_message(invalid_message, "danger")
     status 422
@@ -146,7 +147,7 @@ post "/users/signin" do
     password: params[:password]
   }
   
-  user = @storage.load_user_by_username(signin_data)
+  user = @storage.load_user_from_input(signin_data)
 
   invalid_message = user.invalid_signin_message
   if invalid_message
@@ -194,8 +195,9 @@ get "/ascents/:ascentid/edit" do
   require_signed_in_user
 
   @ascent = @storage.load_ascent_by_id(params[:ascentid].to_i)
+  @peak = @storage.load_peak_by_id(@ascent.peakid)
 
-  if session[:user].id != @ascent.user.id
+  if session[:user].id != @ascent.userid
     alert_message("This is not your ascent.", "danger")
     redirect "/ascents/#{params[:ascentid]}"
   else
@@ -210,10 +212,14 @@ post "/ascents/:ascentid/edit" do
     ascent_id: params[:ascentid].to_i,
     user_id: session[:user].id,
     date: params[:date].strip,
-    note: params[:note].to_s.strip
+    note: params[:note].to_s.strip,
   }
 
-  message = Ascent.invalid_message(ascent_data, :edit)
+  @ascent = @storage.load_ascent_by_id(ascent_data[:ascent_id])
+  @peak = @storage.load_peak_by_id(@ascent.peakid)
+  ascent_data[:peak] = @peak
+
+  message = Ascent.invalid_message(ascent_data)
   if message
     alert_message(message, "danger")
     status 422
@@ -258,6 +264,8 @@ post "/ascents/add_ascent/:peak_id" do
   }
 
   @peak = @storage.load_peak_by_id(params[:peak_id].to_i)
+  ascent_data[:peak] = @peak
+  
   message = Ascent.invalid_message(ascent_data)
 
   if message
