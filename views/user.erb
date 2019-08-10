@@ -20,8 +20,8 @@
           <tbody>
             <% @ascents.each do |ascent| %>
             <tr>
-              <td><%= ascent.peak_name %></td>
-              <td><%= ascent.peak.elevation_str %></td>
+              <td><%= remove_commas_swap(ascent.peak_name) %></td>
+              <td><%= ascent.elevation %></td>
               <td><%= ascent.date_display %></td>
               <td><a class="btn btn-outline-secondary btn-sm" href="/ascents/<%= ascent.id %>">Details</a></td>
             </tr>
@@ -41,10 +41,10 @@
             </tr>
           </thead>
           <tbody>
-            <% @unique_ascents.each do |ascent| %>
+            <% @unique_ascents.each do |peak| %>
             <tr>
-              <td><%= ascent.peak_name %></td>
-              <td><%= ascent.peak.elevation_str %></td>
+              <td><%= peak.name %></td>
+              <td><%= add_commas(peak.elevation) %></td>
             </tr>
             <% end %>
           </tbody>

@@ -63,30 +63,30 @@ class Ascent < PeakListRecord
     end
   end
 
-  attr_accessor :date, :note
+  attr_accessor :date, :note, :user_name, :peak_name, :elevation
   attr_reader :id, :userid, :peakid
 
-  def initialize(userid, peakid)
+  def initialize(id, userid, peakid)
     @userid = userid
     @peakid = peakid
-    @id = next_id
+    @id = id
   end
 
-  def user
-    User.load_user_by_id(@userid)
-  end
+  # def user
+  #   User.load_user_by_id(@userid)
+  # end
 
-  def user_name
-    user.username
-  end
+  # def user_name
+  #   user.username
+  # end
 
-  def peak_name
-    peak.name
-  end
+  # def peak_name
+  #   peak.name
+  # end
 
-  def peak
-    Peak.load_peak_by_id(@peakid)
-  end
+  # def peak
+  #   Peak.load_peak_by_id(@peakid)
+  # end
 
   def date_display
     @date.strftime("%A, %B %-d, %Y")

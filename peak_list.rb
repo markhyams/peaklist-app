@@ -8,7 +8,7 @@ require_relative "peaklistrecord"
 require_relative "peak"
 require_relative "user"
 require_relative "ascent"
-require_relative "file_persistence"
+require_relative "database_persistence"
 
 configure do
   enable :sessions
@@ -18,6 +18,7 @@ end
 
 configure(:development) do
   require "sinatra/reloader"
+  also_reload "database_persistence.rb"
   also_reload "peaklistrecord.rb"
   also_reload "peak.rb"
   also_reload "user.rb"
@@ -28,6 +29,21 @@ end
 helpers do
   def h(content)
     Rack::Utils.escape_html(content)
+  end
+  
+  def remove_commas_swap(str)
+    return str unless str.include?(",")
+    str.split(", ").reverse.join(" ")
+  end
+
+  def add_commas(int)
+    reversed_num_str = int.to_s.chars.reverse
+    result = []
+    reversed_num_str.each_with_index do |num, index|
+      result << "," if index % 3 == 0 && index > 0
+      result << num
+    end
+    result.reverse.join("")
   end
 end
 
@@ -47,8 +63,12 @@ def data_path
 end
 
 before do
-  @storage = FilePersistence.new
+  @storage = DatabasePersistence.new
 end 
+
+after do
+  @storage.disconnect
+end
 
 def user_signed_in?
   session.key?(:user)
@@ -67,32 +87,29 @@ end
 get "/peaks" do
   sort_by = params[:sort_by] ||= "elevation"
   reverse = params[:sort] == "reverse"
-  class_sym = :peak
 
-  @sort_links = @storage.create_sort_links(params, class_sym)
-  @peaks = @storage.all_records_sorted(sort_by, reverse, class_sym)
+  @sort_links = Peak.create_sort_links(params)
+  @peaks = @storage.load_peaks_sorted(sort_by, reverse)
   erb :peaks
 end
 
 get "/ascents" do
   reverse = params[:sort] ||= "reverse" unless params[:sort_by]
   sort_by = params[:sort_by] ||= "date"
-  class_sym = :ascent
 
   reverse = params[:sort] == "reverse"
 
-  @sort_links = @storage.create_sort_links(params, class_sym)
-  @ascents = @storage.all_records_sorted(sort_by, reverse, class_sym)
+  @sort_links = Ascent.create_sort_links(params)
+  @ascents = @storage.load_ascents_sorted(sort_by, reverse)
   erb :ascents
 end
 
 get "/users" do
   reverse = params[:sort] == "reverse"
   sort_by = params[:sort_by]
-  class_sym = :user
 
-  @sort_links = @storage.create_sort_links(params, class_sym)
-  @users = @storage.all_records_sorted(sort_by, reverse, class_sym)
+  @sort_links = User.create_sort_links(params)
+  @users = @storage.load_users_sorted(sort_by, reverse)
   erb :users
 end
 
@@ -128,14 +145,16 @@ post "/users/signin" do
     username: params[:username],
     password: params[:password]
   }
+  
+  user = @storage.load_user_by_username(signin_data)
 
-  invalid_message = User.invalid_signin_message(signin_data)
+  invalid_message = user.invalid_signin_message
   if invalid_message
     alert_message(invalid_message, "danger")
     status 422
     erb :signin
   else
-    session[:user] = @storage.load_user_by_username(signin_data[:username])
+    session[:user] = user
     alert_message("You have logged in successfully.")
     redirect "/"
   end
@@ -154,8 +173,8 @@ get "/users/:userid" do
     alert_message("User does not exist.", "danger")
     redirect "/users"
   else
-    @ascents = @storage.ascents_by_user(@user)
-    @unique_ascents = @storage.peaks_by_user(@user)
+    @ascents = @storage.load_ascents_by_userid(@user.id)
+    @unique_ascents = @storage.load_peaks_by_user(@user)
     erb :user
   end
 end

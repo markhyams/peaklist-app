@@ -1,8 +1,8 @@
 class PeakListRecord
   class << self
-    def load_records(file_path)
-      YAML.load_file(file_path)
-    end
+    # def load_records(file_path)
+    #   YAML.load_file(file_path)
+    # end
 
     def create_sort_links(params)
       result = []

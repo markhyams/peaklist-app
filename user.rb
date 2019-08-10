@@ -64,28 +64,37 @@ class User < PeakListRecord
   end
 
   attr_reader :password, :username, :id
+  attr_accessor :num_of_ascents, :num_of_peaks, :input_password, :password_hash
 
-  def initialize(username)
+  def initialize(id, username)
     @username = username
-    @id = next_id
+    @id = id
   end
 
   def password=(input)
     @password = BCrypt::Password.create(input).to_s
   end
 
-  def valid_password?(input_password)
-    bcryt_password_obj = BCrypt::Password.new(@password)
+  def invalid_signin_message
+    if username == :no_user
+      "Username does not exist."
+    elsif !valid_password?
+      "Wrong password."
+    end
+  end
+
+  def valid_password?
+    bcryt_password_obj = BCrypt::Password.new(password_hash)
     bcryt_password_obj == input_password
   end
 
-  def num_of_ascents
-    user_ascents.count
-  end
+  # def num_of_ascents
+  #   user_ascents.count
+  # end
 
-  def num_of_peaks
-    unique_peaks.count
-  end
+  # def num_of_peaks
+  #   unique_peaks.count
+  # end
 
   def unique_peaks
     user_ascents.uniq(&:peakid).sort_by do |ascent|
@@ -93,10 +102,10 @@ class User < PeakListRecord
     end.reverse
   end
 
-  def user_ascents
-    ascents = Ascent.load_ascents
-    ascents.select { |ascent| ascent.userid == @id }.sort_by(&:date).reverse
-  end
+  # def user_ascents
+  #   ascents = Ascent.load_ascents
+  #   ascents.select { |ascent| ascent.userid == @id }.sort_by(&:date).reverse
+  # end
 
   def write_to_users_file
     write_to_records_file

@@ -9,6 +9,7 @@ gem "rack-test"
 gem "minitest"
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 gem 'simplecov'
+gem 'pg'
 
 group :production do
   gem "puma"

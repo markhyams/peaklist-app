@@ -1,16 +1,14 @@
 class FilePersistence
-  CLASSES = {
-    peak: Peak,
-    ascent: Ascent,
-    user: User
-  }
-  
-  def create_sort_links(params, class_sym)
-    CLASSES[class_sym].create_sort_links(params)
+  def load_peaks_sorted(sort_by, reverse)
+    Peak.sort_records(sort_by, reverse)
   end
   
-  def all_records_sorted(sort_by, reverse, class_sym)
-    CLASSES[class_sym].sort_class_records(sort_by, reverse)
+  def load_ascents_sorted(sort_by, reverse)
+    Ascent.sort_records(sort_by, reverse)
+  end
+  
+  def load_users_sorted(sort_by, reverse)
+    User.sort_records(sort_by, reverse)
   end
   
   def create_new_user(data)
@@ -29,11 +27,11 @@ class FilePersistence
     Peak.load_peak_by_id(id)
   end
   
-  def ascents_by_user(user)
+  def load_ascents_by_user(user)
     user.user_ascents
   end
   
-  def peaks_by_user(user)
+  def load_peaks_by_user(user)
     user.unique_peaks
   end
   

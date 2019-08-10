@@ -45,7 +45,7 @@ class Peak < PeakListRecord
   end
 
   attr_reader :id
-  attr_accessor :elevation, :prominence, :isolation, :county, :quad, :state
+  attr_accessor :elevation, :prominence, :isolation, :county, :quad, :state, :num_ascents, :ascents
 
   def initialize(id)
     @id = id
@@ -54,6 +54,10 @@ class Peak < PeakListRecord
   def name
     remove_commas_swap(@name)
   end
+  
+  def name=(n)
+    @name = n
+  end
 
   def name_sort
     @name
@@ -61,6 +65,10 @@ class Peak < PeakListRecord
 
   def parent
     remove_commas_swap(@parent)
+  end
+  
+  def parent=(parent_input)
+    @parent = parent_input
   end
 
   def parent_sort
@@ -75,14 +83,14 @@ class Peak < PeakListRecord
     add_commas(@prominence)
   end
 
-  def ascents
-    result = Ascent.load_ascents
-    result.select { |ascent| ascent.peakid == @id }
-  end
+  # def ascents
+  #   result = Ascent.load_ascents
+  #   result.select { |ascent| ascent.peakid == @id }
+  # end
 
-  def num_ascents
-    ascents.count
-  end
+  # def num_ascents
+  #   ascents.count
+  # end
 
   def num_ascents_by_user(user)
     return nil unless user
