@@ -272,7 +272,7 @@ INSERT INTO public.ascents VALUES (109, 2, 5, '2019-08-10', 'I climbed this in f
 -- Name: ascents_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ec2-user
 --
 
-SELECT pg_catalog.setval('public.ascents_id_seq', 109, true);
+SELECT pg_catalog.setval('public.ascents_id_seq', 111, true);
 
 
 --
@@ -340,7 +340,7 @@ INSERT INTO public.peaks VALUES (55, 'El Diente Peak', 14159, 259, 0.75, 'Wilson
 -- Name: peaks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ec2-user
 --
 
-SELECT pg_catalog.setval('public.peaks_id_seq', 1, false);
+SELECT pg_catalog.setval('public.peaks_id_seq', 55, true);
 
 
 --
@@ -352,13 +352,14 @@ INSERT INTO public.users VALUES (1, 'julia', '$2a$12$9bEzqZ0sMk7PIk8MULCrDOBalhX
 INSERT INTO public.users VALUES (2, 'steve', '$2a$12$kXIvtEaGSpfmXVC2ho8i6eQnRUB2cu6.WvSMfflgQejxW5SM0itGy');
 INSERT INTO public.users VALUES (3, 'andrew', '$2a$12$pBVA7q2pvNNd7SxXKIpeAu2eki98DPqiUjLn7ZcKjQp6KWVzmRhsS');
 INSERT INTO public.users VALUES (4, 'erdwomann', '$2a$12$wfdM4vOgpwJ5tJF16V2zruMwBA12Mhl4vlks//e.OJtK4H2DL3Zl6');
+INSERT INTO public.users VALUES (8, 'test', '$2a$12$dumn9P1AD.zkpYaW5Te/d.nDIWcRiDvzzl2.Ge4oJ5mWF7vQWPMGu');
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ec2-user
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 7, true);
+SELECT pg_catalog.setval('public.users_id_seq', 8, true);
 
 
 --

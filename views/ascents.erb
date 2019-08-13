@@ -18,7 +18,7 @@
         <% @ascents.each do |ascent| %>
         <tr>
           <td><%= ascent.user_name %></td>
-          <td><%= ascent.peak_name %></td>
+          <td><%= remove_commas_swap(ascent.peak_name) %></td>
           <td><%= ascent.date %></td>
           <td><a class="btn btn-outline-secondary btn-sm" href="/ascents/<%= ascent.id %>">Details</a></td>
         </tr>

@@ -3,11 +3,20 @@ class User < PeakListRecord
     "username" => "Climber",
     "num_of_ascents" => "Number of Ascents"
   }
+  
+  REVERSE_SORTS = ["num_of_ascents"]
 
   class << self
-    def create_new_user(data)
+    def create_temp_user(data)
       user = new(0, data[:username])
       user.password = data[:password]
+      user
+    end
+    
+    def make_object(tuple)
+      user = new(tuple["id"].to_i, tuple["username"])
+      user.num_of_ascents = tuple["num_of_ascents"]
+      
       user
     end
   end

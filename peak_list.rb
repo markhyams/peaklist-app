@@ -54,16 +54,16 @@ def alert_message(text, type="success")
   }
 end
 
-def data_path
+def database_name
   if ENV["RACK_ENV"] == "test"
-    File.expand_path("../test", __FILE__)
+    "peak_list_test"
   else
-    File.expand_path("../", __FILE__)
+    "peak_list"
   end
 end
 
 before do
-  @storage = DatabasePersistence.new
+  @storage = DatabasePersistence.new(database_name)
 end 
 
 after do
@@ -94,9 +94,7 @@ get "/peaks" do
 end
 
 get "/ascents" do
-  reverse = params[:sort] ||= "reverse" unless params[:sort_by]
   sort_by = params[:sort_by] ||= "date"
-
   reverse = params[:sort] == "reverse"
 
   @sort_links = Ascent.create_sort_links(params)
@@ -106,7 +104,7 @@ end
 
 get "/users" do
   reverse = params[:sort] == "reverse"
-  sort_by = params[:sort_by]
+  sort_by = params[:sort_by] ||= "date"
 
   @sort_links = User.create_sort_links(params)
   @users = @storage.load_users_sorted(sort_by, reverse)
@@ -131,7 +129,7 @@ post "/users/signup" do
     status 422
     erb :signup
   else
-    @storage.create_new_user(signup_data)
+    @storage.add_new_user(signup_data)
     alert_message("You have signed up successfully.")
     redirect "/"
   end
@@ -195,8 +193,12 @@ get "/ascents/:ascentid/edit" do
   require_signed_in_user
 
   @ascent = @storage.load_ascent_by_id(params[:ascentid].to_i)
+  if @ascent.nil?
+    alert_message("Ascent does not exist.", "danger")
+    redirect "/ascents/#{params[:ascentid]}"
+  end
+  
   @peak = @storage.load_peak_by_id(@ascent.peakid)
-
   if session[:user].id != @ascent.userid
     alert_message("This is not your ascent.", "danger")
     redirect "/ascents/#{params[:ascentid]}"
@@ -282,7 +284,13 @@ end
 get "/peaks/:peakid" do
   @peak = @storage.load_peak_by_id(params[:peakid].to_i)
 
-  erb :peak
+  if !@peak
+    alert_message("Peak does not exist.", "danger")
+    status 422
+    redirect "/"
+  else
+    erb :peak
+  end
 end
 
 get "/cancel_save" do

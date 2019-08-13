@@ -1,10 +1,10 @@
 class Peak < PeakListRecord
   VALID_SORTS = {
-    "name_sort" => "Name",
+    "name" => "Name",
     "elevation" => "Elevation",
     "prominence" => "Prominence",
     "isolation" => "Isolation",
-    "parent_sort" => "Parent",
+    "parent" => "Parent",
     "county" => "County",
     "state" => "State",
     "quad" => "Quadrangle"
@@ -15,6 +15,20 @@ class Peak < PeakListRecord
     "elevation",
     "isolation"
   ]
+  
+  def self.make_object(tuple)
+    peak = new(tuple["id"].to_i)
+    peak.name = tuple["name"]
+    peak.elevation = tuple["elevation"].to_i
+    peak.prominence = tuple["prominence"].to_i
+    peak.isolation = tuple["isolation"].to_f
+    peak.parent = tuple["parent"]
+    peak.county = tuple["county"]
+    peak.quad = tuple["quad"]
+    peak.state = tuple["state"]
+
+    peak
+  end
 
   attr_reader :id
   attr_accessor :elevation, :prominence, :isolation, :county, :quad, :state, :num_ascents, :ascents

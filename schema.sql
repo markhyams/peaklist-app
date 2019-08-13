@@ -23,12 +23,3 @@ peak_id integer NOT NULL REFERENCES peaks(id) ON DELETE CASCADE,
 "date" date NOT NULL,
 note text
 );
-
-SELECT 
-peaks.name AS peak_name, 
-ascents.*, 
-users.username AS user_name 
-FROM ascents INNER JOIN users
-ON ascents.user_id = users.id 
-INNER JOIN peaks
-ON peaks.id = ascents.peak_id;

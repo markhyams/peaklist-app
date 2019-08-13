@@ -21,7 +21,7 @@
             <% @ascents.each do |ascent| %>
             <tr>
               <td><%= remove_commas_swap(ascent.peak_name) %></td>
-              <td><%= ascent.elevation %></td>
+              <td><%= add_commas(ascent.elevation) %></td>
               <td><%= ascent.date_display %></td>
               <td><a class="btn btn-outline-secondary btn-sm" href="/ascents/<%= ascent.id %>">Details</a></td>
             </tr>

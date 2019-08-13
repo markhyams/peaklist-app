@@ -1,13 +1,13 @@
 require 'pg'
 
 class DatabasePersistence
-  def initialize
-    @db = PG.connect(dbname: "peak_list")
+  def initialize(db_name)
+    @db = PG.connect(dbname: db_name)
   end
 
   def query(sql, *params)
-    puts sql
-    puts params
+    # puts sql
+    # puts params
     @db.exec_params(sql, params)
   end
 
@@ -17,45 +17,22 @@ class DatabasePersistence
 
   def make_peak_object(tuple)
     id = tuple["id"].to_i
-    peak = Peak.new(id)
-    peak.name = tuple["name"]
-    peak.elevation = tuple["elevation"].to_i
-    peak.prominence = tuple["prominence"].to_i
-    peak.isolation = tuple["isolation"].to_f
-    peak.parent = tuple["parent"]
-    peak.county = tuple["county"]
-    peak.quad = tuple["quad"]
-    peak.state = tuple["state"]
+    peak = Peak.make_object(tuple)
     peak.num_ascents = num_ascents_of_peak(id)
     peak.ascents = load_ascents_by_peakid(id)
+    
     peak
   end
 
   def make_ascent_object(tuple)
-    ascent = Ascent.new(tuple["id"].to_i,
-                        tuple["user_id"].to_i,
-                        tuple["peak_id"].to_i)
-    ascent.date = Date.parse(tuple["date"])
-    ascent.note = tuple["note"]
-    ascent.user_name = tuple["user_name"]
-    ascent.peak_name = tuple["peak_name"]
-    ascent.elevation = tuple["elevation"].to_i
-
-    ascent
+    Ascent.make_object(tuple)
   end
 
   def make_user_object(tuple)
-    id = tuple["id"].to_i
-    user = User.new(id, tuple["username"])
-    user.num_of_ascents = num_ascents_by_user(id)
-    user.num_of_peaks = num_peaks_by_user(id)
+    user = User.make_object(tuple)
+    user.num_of_peaks = num_peaks_by_user(tuple["id"].to_i)
 
     user
-  end
-
-  def num_ascents_by_user(user_id)
-    sql = "SELECT count(id) FROM ascents WHERE user_id = $1 GROUP BY user_id;"
-    query(sql, user_id).first["count"].to_i
   end
 
   def num_peaks_by_user(user_id)
@@ -69,15 +46,16 @@ class DatabasePersistence
   end
 
   def load_peaks_sorted(sort_by, reverse)
-    sql = "SELECT * FROM peaks;"
+    order = Peak.order_by_str(sort_by, reverse)
+    sql = "SELECT * FROM peaks ORDER BY #{order};"
     result = query(sql)
-
     result.map do |peak_record|
       make_peak_object(peak_record)
     end
   end
 
   def load_ascents_sorted(sort_by, reverse)
+    order = Ascent.order_by_str(sort_by, reverse)
     sql = <<~SQL
       SELECT
       peaks.name AS peak_name,
@@ -87,7 +65,8 @@ class DatabasePersistence
       FROM ascents INNER JOIN users
       ON ascents.user_id = users.id
       INNER JOIN peaks
-      ON peaks.id = ascents.peak_id;
+      ON peaks.id = ascents.peak_id
+      ORDER BY #{order};
     SQL
     result = query(sql)
 
@@ -97,7 +76,14 @@ class DatabasePersistence
   end
 
   def load_users_sorted(sort_by, reverse)
-    sql = "SELECT * FROM users;"
+    order = User.order_by_str(sort_by, reverse)
+    sql = <<~SQL
+      SELECT users.id, users.username, 
+      COALESCE( (SELECT count(id) FROM ascents 
+      WHERE user_id = users.id GROUP BY user_id), 0) 
+      AS num_of_ascents FROM users
+      ORDER BY #{order};
+    SQL
     result = query(sql)
 
     result.map do |user_record|
@@ -105,8 +91,8 @@ class DatabasePersistence
     end
   end
 
-  def create_new_user(data)
-    new_user = User.create_new_user(data)
+  def add_new_user(data)
+    new_user = User.create_temp_user(data)
     sql = "INSERT INTO users (username, password) VALUES ($1, $2);"
 
     query(sql, new_user.username, new_user.password)
@@ -127,15 +113,16 @@ class DatabasePersistence
   def load_user_by_id(id)
     sql = "SELECT * FROM users WHERE id = $1"
     result = query(sql, id)
-
+    return nil if result.ntuples == 0
     make_user_object(result.first)
   end
 
   def load_peak_by_id(id)
     sql = "SELECT * FROM peaks WHERE id = $1"
     result = query(sql, id)
+    
+    return nil if result.ntuples == 0;
     make_peak_object(result.first)
-
   end
 
   def load_ascents_by_userid(id)
@@ -197,7 +184,8 @@ class DatabasePersistence
       WHERE ascents.id = $1;
     SQL
     result = query(sql, id)
-
+    
+    return nil if result.ntuples == 0;
     make_ascent_object(result.first)
   end
 

@@ -4,6 +4,8 @@ class Ascent < PeakListRecord
     "peak_name" => "Peak",
     "date" => "Date"
   }
+  
+  REVERSE_SORTS = []
 
   class << self
     def invalid_message(data)
@@ -23,6 +25,19 @@ class Ascent < PeakListRecord
 
     def sort_class_records(sort_by, rev)
       sort_records(sort_by, rev)
+    end
+    
+    def make_object(tuple)
+      ascent = new(tuple["id"].to_i,
+                          tuple["user_id"].to_i,
+                          tuple["peak_id"].to_i)
+      ascent.date = Date.parse(tuple["date"])
+      ascent.note = tuple["note"]
+      ascent.user_name = tuple["user_name"]
+      ascent.peak_name = tuple["peak_name"]
+      ascent.elevation = tuple["elevation"].to_i
+      
+      ascent
     end
   end
 
