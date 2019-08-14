@@ -12,8 +12,9 @@ require_relative "database_persistence"
 
 configure do
   enable :sessions
-  set :session_secret, "secret"
-  # Use for more security: ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
+  # set :session_secret, "secret"
+  # Use for more security: 
+  set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
 end
 
 configure(:development) do
