@@ -4,7 +4,7 @@ A ascent-tracking application for climbs of [Colorado's Fourteeners](http://www.
 
 Built using Sinatra and Bootstrap for styling. Inspired by [Lists of John](http://www.listsofjohn.com) and [Peakbagger](http://www.peakbagger.com).
 
-Deployed on Heroku at http://marktrumpet-peaklist.herokuapp.com. Peak List uses `yaml` files for tracking data, and because of Heroku's ephemeral file system, any data added or changed is not saved long-term. The data may persist for up to 24 hours. Have fun playing around!
+Deployed on Heroku at http://marktrumpet-peaklist.herokuapp.com. Peak List uses a postgreSQL database for tracking data. Have fun playing around!
 
 #### Features:
 - Sign Up, passwords hashed using [BCrypt](https://github.com/codahale/bcrypt-ruby).
