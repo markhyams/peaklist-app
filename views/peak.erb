@@ -43,7 +43,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @peak.ascents.sort_by(&:date).reverse.each do |ascent| %>
+            <% @peak.ascents.each do |ascent| %>
             <tr>
               <td><a class="text-secondary" href="/users/<%= ascent.userid %>"><%= ascent.user_name %></a></td>
               <td><%= ascent.date %></td>

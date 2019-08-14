@@ -6,8 +6,8 @@ class DatabasePersistence
   end
 
   def query(sql, *params)
-    # puts sql
-    # puts params
+    puts sql
+    puts params
     @db.exec_params(sql, params)
   end
 
@@ -134,7 +134,8 @@ class DatabasePersistence
       ascents.*
       FROM ascents INNER JOIN peaks
       ON peaks.id = ascents.peak_id
-      WHERE ascents.user_id = $1;
+      WHERE ascents.user_id = $1
+      ORDER BY "date" DESC;
     SQL
     result = query(sql, id)
 
@@ -144,12 +145,12 @@ class DatabasePersistence
   end
 
   def load_ascents_by_peakid(id)
-    sql = "SELECT * FROM ascents WHERE peak_id = $1"
     sql = <<~SQL
       SELECT ascents.*, users.username AS user_name
       FROM ascents INNER JOIN users
       ON ascents.user_id = users.id
-      WHERE ascents.peak_id = $1;
+      WHERE ascents.peak_id = $1
+      ORDER BY "date" DESC;
     SQL
     result = query(sql, id)
 
@@ -162,7 +163,8 @@ class DatabasePersistence
     sql = <<~SQL
     SELECT DISTINCT ascents.peak_id, peaks.name, peaks.elevation FROM ascents INNER JOIN peaks
     ON ascents.peak_id = peaks.id
-    WHERE user_id = $1;
+    WHERE user_id = $1
+    ORDER BY elevation DESC;
     SQL
     result = query(sql, user.id)
 
