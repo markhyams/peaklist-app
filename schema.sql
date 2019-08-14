@@ -23,3 +23,10 @@ peak_id integer NOT NULL REFERENCES peaks(id) ON DELETE CASCADE,
 "date" date NOT NULL,
 note text
 );
+
+
+SELECT users.id, users.username, 
+      COALESCE( (SELECT count(id) FROM ascents 
+      WHERE user_id = users.id GROUP BY user_id), 0) 
+      AS num_of_ascents FROM users
+      ORDER BY num_of_ascents;

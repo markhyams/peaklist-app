@@ -17,10 +17,11 @@ class DatabasePersistence
 
   def make_peak_object(tuple)
     id = tuple["id"].to_i
+
     peak = Peak.make_object(tuple)
     peak.num_ascents = num_ascents_of_peak(id)
     peak.ascents = load_ascents_by_peakid(id)
-    
+
     peak
   end
 
@@ -78,9 +79,9 @@ class DatabasePersistence
   def load_users_sorted(sort_by, reverse)
     order = User.order_by_str(sort_by, reverse)
     sql = <<~SQL
-      SELECT users.id, users.username, 
-      COALESCE( (SELECT count(id) FROM ascents 
-      WHERE user_id = users.id GROUP BY user_id), 0) 
+      SELECT users.id, users.username,
+      COALESCE( (SELECT count(id) FROM ascents
+      WHERE user_id = users.id GROUP BY user_id), 0)
       AS num_of_ascents FROM users
       ORDER BY #{order};
     SQL
@@ -120,7 +121,7 @@ class DatabasePersistence
   def load_peak_by_id(id)
     sql = "SELECT * FROM peaks WHERE id = $1"
     result = query(sql, id)
-    
+
     return nil if result.ntuples == 0;
     make_peak_object(result.first)
   end
@@ -184,7 +185,7 @@ class DatabasePersistence
       WHERE ascents.id = $1;
     SQL
     result = query(sql, id)
-    
+
     return nil if result.ntuples == 0;
     make_ascent_object(result.first)
   end
