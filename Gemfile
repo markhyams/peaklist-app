@@ -11,7 +11,8 @@ gem "minitest"
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 gem 'simplecov'
 gem 'pg'
+gem 'puma'
 
-group :production do
-  gem "puma"
-end
+# group :production do
+#   gem "puma"
+# end
