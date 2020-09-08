@@ -18,9 +18,6 @@ Deployed on Heroku at http://marktrumpet-peaklist.herokuapp.com. Peak List uses 
 - On an individual peak's page, shows all logged ascents for that peak.
 - Ascents are public, but can only be edited and deleted by its user.
 
-#### Known Issues:
-- Does not use https, so please do not use any passwords that you use elsewhere.
-
 #### Future Features:
 - Delete users
 - Change passwords
